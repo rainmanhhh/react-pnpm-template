@@ -3,14 +3,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
+####Before use this template project, please install pnpm first by: `npm install -g pnpm`
+
 ## Table of Contents
 
 - [Updating to New Releases](#updating-to-new-releases)
 - [Sending Feedback](#sending-feedback)
 - [Folder Structure](#folder-structure)
 - [Available Scripts](#available-scripts)
-  - [npm start](#npm-start)
-  - [npm test](#npm-test)
+  - [npm run start](#npm-start)
+  - [npm run test](#npm-test)
   - [npm run build](#npm-run-build)
   - [npm run eject](#npm-run-eject)
 - [Supported Browsers](#supported-browsers)
@@ -94,8 +96,8 @@ You can find the most recent version of this guide [here](https://github.com/fac
   - [Surge](#surge)
 - [Advanced Configuration](#advanced-configuration)
 - [Troubleshooting](#troubleshooting)
-  - [`npm start` doesn’t detect changes](#npm-start-doesnt-detect-changes)
-  - [`npm test` hangs on macOS Sierra](#npm-test-hangs-on-macos-sierra)
+  - [`npm run start` doesn’t detect changes](#npm-start-doesnt-detect-changes)
+  - [`npm run test` hangs on macOS Sierra](#npm-test-hangs-on-macos-sierra)
   - [`npm run build` exits too early](#npm-run-build-exits-too-early)
   - [`npm run build` fails on Heroku](#npm-run-build-fails-on-heroku)
   - [`npm run build` fails to minify](#npm-run-build-fails-to-minify)
@@ -116,7 +118,7 @@ When you run `create-react-app`, it always creates the project with the latest v
 
 To update an existing project to a new version of `react-scripts`, [open the changelog](https://github.com/facebookincubator/create-react-app/blob/master/CHANGELOG.md), find the version you’re currently on (check `package.json` in this folder if you’re not sure), and apply the migration instructions for the newer versions.
 
-In most cases bumping the `react-scripts` version in `package.json` and running `npm install` in this folder should be enough, but it’s good to consult the [changelog](https://github.com/facebookincubator/create-react-app/blob/master/CHANGELOG.md) for potential breaking changes.
+In most cases bumping the `react-scripts` version in `package.json` and running `pnpm install --shamefully-flatten` in this folder should be enough, but it’s good to consult the [changelog](https://github.com/facebookincubator/create-react-app/blob/master/CHANGELOG.md) for potential breaking changes.
 
 We commit to keeping the breaking changes minimal so you can upgrade `react-scripts` painlessly.
 
@@ -165,7 +167,7 @@ They will not be included in the production build so you can use them for things
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -173,7 +175,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
+### `npm run test`
 
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](#running-tests) for more information.
@@ -287,7 +289,7 @@ Then add the block below to your `launch.json` file and put it inside the `.vsco
 ```
 >Note: the URL may be different if you've made adjustments via the [HOST or PORT environment variables](#advanced-configuration).
 
-Start your app by running `npm start`, and start debugging in VS Code by pressing `F5` or by clicking the green debug icon. You can now write code, set breakpoints, make changes to the code, and debug your newly modified code—all from your editor.
+Start your app by running `npm run start`, and start debugging in VS Code by pressing `F5` or by clicking the green debug icon. You can now write code, set breakpoints, make changes to the code, and debug your newly modified code—all from your editor.
 
 ### WebStorm
 
@@ -297,7 +299,7 @@ In the WebStorm menu `Run` select `Edit Configurations...`. Then click `+` and s
 
 >Note: the URL may be different if you've made adjustments via the [HOST or PORT environment variables](#advanced-configuration).
 
-Start your app by running `npm start`, then press `^D` on macOS or `F9` on Windows and Linux or click the green debug icon to start debugging in WebStorm.
+Start your app by running `npm run start`, then press `^D` on macOS or `F9` on Windows and Linux or click the green debug icon to start debugging in WebStorm.
 
 The same way you can debug your application in IntelliJ IDEA Ultimate, PhpStorm, PyCharm Pro, and RubyMine. 
 
@@ -308,13 +310,7 @@ Prettier is an opinionated code formatter with support for JavaScript, CSS and J
 To format our code whenever we make a commit in git, we need to install the following dependencies:
 
 ```sh
-npm install --save husky lint-staged prettier
-```
-
-Alternatively you may use `yarn`:
-
-```sh
-yarn add husky lint-staged prettier
+pnpm install --shamefully-flatten husky lint-staged prettier
 ```
 
 * `husky` makes it easy to use githooks as if they are npm scripts.
@@ -366,13 +362,7 @@ If you use a custom server for your app in production and want to modify the tit
 The generated project includes React and ReactDOM as dependencies. It also includes a set of scripts used by Create React App as a development dependency. You may install other dependencies (for example, React Router) with `npm`:
 
 ```sh
-npm install --save react-router
-```
-
-Alternatively you may use `yarn`:
-
-```sh
-yarn add react-router
+pnpm install --shamefully-flatten react-router
 ```
 
 This works for any library, not just `react-router`.
@@ -553,13 +543,7 @@ Following this rule often makes CSS preprocessors less useful, as features like 
 First, let’s install the command-line interface for Sass:
 
 ```sh
-npm install --save node-sass-chokidar
-```
-
-Alternatively you may use `yarn`:
-
-```sh
-yarn add node-sass-chokidar
+pnpm install --shamefully-flatten node-sass-chokidar
 ```
 
 Then in `package.json`, add the following lines to `scripts`:
@@ -595,16 +579,10 @@ This will allow you to do imports like
 
 At this point you might want to remove all CSS files from the source control, and add `src/**/*.css` to your `.gitignore` file. It is generally a good practice to keep the build products outside of the source control.
 
-As a final step, you may find it convenient to run `watch-css` automatically with `npm start`, and run `build-css` as a part of `npm run build`. You can use the `&&` operator to execute two scripts sequentially. However, there is no cross-platform way to run two scripts in parallel, so we will install a package for this:
+As a final step, you may find it convenient to run `watch-css` automatically with `npm run start`, and run `build-css` as a part of `npm run build`. You can use the `&&` operator to execute two scripts sequentially. However, there is no cross-platform way to run two scripts in parallel, so we will install a package for this:
 
 ```sh
-npm install --save npm-run-all
-```
-
-Alternatively you may use `yarn`:
-
-```sh
-yarn add npm-run-all
+pnpm install --shamefully-flatten npm-run-all
 ```
 
 Then we can change `start` and `build` scripts to include the CSS preprocessor commands:
@@ -623,7 +601,7 @@ Then we can change `start` and `build` scripts to include the CSS preprocessor c
    }
 ```
 
-Now running `npm start` and `npm run build` also builds Sass files.
+Now running `npm run start` and `npm run build` also builds Sass files.
 
 **Why `node-sass-chokidar`?**
 
@@ -780,13 +758,7 @@ You don’t have to use [React Bootstrap](https://react-bootstrap.github.io) tog
 Install React Bootstrap and Bootstrap from npm. React Bootstrap does not include Bootstrap CSS so this needs to be installed as well:
 
 ```sh
-npm install --save react-bootstrap bootstrap@3
-```
-
-Alternatively you may use `yarn`:
-
-```sh
-yarn add react-bootstrap bootstrap@3
+pnpm install --shamefully-flatten react-bootstrap bootstrap@4
 ```
 
 Import Bootstrap CSS and optionally Bootstrap theme CSS in the beginning of your ```src/index.js``` file:
@@ -825,12 +797,12 @@ Recent versions of [Flow](http://flowtype.org/) work with Create React App proje
 
 To add Flow to a Create React App project, follow these steps:
 
-1. Run `npm install --save flow-bin` (or `yarn add flow-bin`).
+1. Run `pnpm install --shamefully-flatten flow-bin`.
 2. Add `"flow": "flow"` to the `scripts` section of your `package.json`.
-3. Run `npm run flow init` (or `yarn flow init`) to create a [`.flowconfig` file](https://flowtype.org/docs/advanced-configuration.html) in the root directory.
+3. Run `npm run flow init` to create a [`.flowconfig` file](https://flowtype.org/docs/advanced-configuration.html) in the root directory.
 4. Add `// @flow` to any files you want to type check (for example, to `src/App.js`).
 
-Now you can run `npm run flow` (or `yarn flow`) to check the files for type errors.
+Now you can run `npm run flow` to check the files for type errors.
 You can optionally use an IDE like [Nuclide](https://nuclide.io/docs/languages/flow/) for a better integrated experience.
 In the future we plan to integrate it into Create React App even more closely.
 
@@ -843,13 +815,7 @@ Create React App doesn't prescribe a specific routing solution, but [React Route
 To add it, run:
 
 ```sh
-npm install --save react-router-dom
-```
-
-Alternatively you may use `yarn`:
-
-```sh
-yarn add react-router-dom
+pnpm install --shamefully-flatten react-router-dom
 ```
 
 To try it, delete all the code in `src/App.js` and replace it with any of the examples on its website. The [Basic Example](https://reacttraining.com/react-router/web/example/basic) is a good place to get started.
@@ -871,7 +837,7 @@ default you will have `NODE_ENV` defined for you, and any other environment vari
 These environment variables will be defined for you on `process.env`. For example, having an environment
 variable named `REACT_APP_SECRET_CODE` will be exposed in your JS as `process.env.REACT_APP_SECRET_CODE`.
 
-There is also a special built-in environment variable called `NODE_ENV`. You can read it from `process.env.NODE_ENV`. When you run `npm start`, it is always equal to `'development'`, when you run `npm test` it is always equal to `'test'`, and when you run `npm run build` to make a production bundle, it is always equal to `'production'`. **You cannot override `NODE_ENV` manually.** This prevents developers from accidentally deploying a slow development build to production.
+There is also a special built-in environment variable called `NODE_ENV`. You can read it from `process.env.NODE_ENV`. When you run `npm run start`, it is always equal to `'development'`, when you run `npm run test` it is always equal to `'test'`, and when you run `npm run build` to make a production bundle, it is always equal to `'production'`. **You cannot override `NODE_ENV` manually.** This prevents developers from accidentally deploying a slow development build to production.
 
 These environment variables can be useful for displaying information conditionally based on where the project is
 deployed or consuming sensitive data that lives outside of version control.
@@ -894,7 +860,7 @@ render() {
 
 During the build, `process.env.REACT_APP_SECRET_CODE` will be replaced with the current value of the `REACT_APP_SECRET_CODE` environment variable. Remember that the `NODE_ENV` variable will be set for you automatically.
 
-When you load the app in the browser and inspect the `<input>`, you will see its value set to `abcdef`, and the bold text will show the environment provided when using `npm start`:
+When you load the app in the browser and inspect the `<input>`, you will see its value set to `abcdef`, and the bold text will show the environment provided when using `npm run start`:
 
 ```html
 <div>
@@ -1362,13 +1328,7 @@ When you encounter bugs caused by changing components, you will gain a deeper in
 If you’d like to test components in isolation from the child components they render, we recommend using [`shallow()` rendering API](http://airbnb.io/enzyme/docs/api/shallow.html) from [Enzyme](http://airbnb.io/enzyme/). To install it, run:
 
 ```sh
-npm install --save-dev enzyme @types/enzyme enzyme-adapter-react-16 @types/enzyme-adapter-react-16 react-test-renderer @types/react-test-renderer
-```
-
-Alternatively you may use `yarn`:
-
-```sh
-yarn add --dev enzyme @types/enzyme enzyme-adapter-react-16 @types/enzyme-adapter-react-16 react-test-renderer @types/react-test-renderer
+pnpm install --shamefully-flatten -D enzyme @types/enzyme enzyme-adapter-react-16 @types/enzyme-adapter-react-16 react-test-renderer @types/react-test-renderer
 ```
 
 #### `src/setupTests.ts`
@@ -1424,13 +1384,7 @@ expect(wrapper).toContainReact(welcome)
 To enable this, install `jest-enzyme`:
 
 ```sh
-npm install --save jest-enzyme
-```
-
-Alternatively you may use `yarn`:
-
-```sh
-yarn add jest-enzyme
+pnpm install --shamefully-flatten jest-enzyme
 ```
 
 Import it in [`src/setupTests.ts`](#initializing-test-environment) to make its matchers available in every test:
@@ -1732,7 +1686,7 @@ Storybook is a development environment for React UI components. It allows you to
 First, install the following npm package globally:
 
 ```sh
-npm install -g @storybook/cli
+pnpm install -g @storybook/cli
 ```
 
 Then, run the following command inside your app’s directory:
@@ -1757,13 +1711,7 @@ Styleguidist combines a style guide, where all your components are presented on 
 First, install Styleguidist:
 
 ```sh
-npm install --save react-styleguidist
-```
-
-Alternatively you may use `yarn`:
-
-```sh
-yarn add react-styleguidist
+pnpm install --shamefully-flatten react-styleguidist
 ```
 
 Then, add these scripts to your `package.json`:
@@ -1904,13 +1852,7 @@ bloat is coming from.
 To add Source map explorer to a Create React App project, follow these steps:
 
 ```sh
-npm install --save source-map-explorer
-```
-
-Alternatively you may use `yarn`:
-
-```sh
-yarn add source-map-explorer
+pnpm install --shamefully-flatten source-map-explorer
 ```
 
 Then in `package.json`, add the following line to `scripts`:
@@ -1940,7 +1882,7 @@ npm run analyze
 For environments using [Node](https://nodejs.org/), the easiest way to handle this would be to install [serve](https://github.com/zeit/serve) and let it handle the rest:
 
 ```sh
-npm install -g serve
+pnpm install -g serve
 serve -s build
 ```
 
@@ -2058,7 +2000,7 @@ See [this](https://medium.com/@to_pe/deploying-create-react-app-on-microsoft-azu
 See [this](https://medium.com/@strid/host-create-react-app-on-azure-986bc40d5bf2#.pycfnafbg) blog post or [this](https://github.com/ulrikaugustsson/azure-appservice-static) repo for a way to use automatic deployment to Azure App Service.
 
 
-Install the Firebase CLI if you haven’t already by running `npm install -g firebase-tools`. Sign up for a [Firebase account](https://console.firebase.google.com/) and create a new project. Run `firebase login` and login with your previous created Firebase account.
+Install the Firebase CLI if you haven’t already by running `pnpm install -g firebase-tools`. Sign up for a [Firebase account](https://console.firebase.google.com/) and create a new project. Run `firebase login` and login with your previous created Firebase account.
 
 Then run the `firebase init` command from your project’s root. You need to choose the **Hosting: Configure and deploy Firebase Hosting sites** and choose the Firebase project you created in the previous step. You will need to agree with `database.rules.json` being created, choose `build` as the public directory, and also agree to **Configure as a single-page app** by replying with `y`.
 
@@ -2159,13 +2101,7 @@ Now, whenever you run `npm run build`, you will see a cheat sheet with instructi
 To publish it at [https://myusername.github.io/my-app](https://myusername.github.io/my-app), run:
 
 ```sh
-npm install --save gh-pages
-```
-
-Alternatively you may use `yarn`:
-
-```sh
-yarn add gh-pages
+pnpm install --shamefully-flatten gh-pages
 ```
 
 Add the following scripts in your `package.json`:
@@ -2274,7 +2210,7 @@ In this case, ensure that the file is there with the proper lettercase and that�
 **To do a manual deploy to Netlify’s CDN:**
 
 ```sh
-npm install netlify-cli -g
+pnpm install -g netlify-cli
 netlify deploy
 ```
 
@@ -2303,7 +2239,7 @@ When you build the project, Create React App will place the `public` folder cont
 
 [now](https://zeit.co/now) offers a zero-configuration single-command deployment. You can use `now` to deploy your app for free.
 
-1. Install the `now` command-line tool either via the recommended [desktop tool](https://zeit.co/download) or via node with `npm install -g now`.
+1. Install the `now` command-line tool either via the recommended [desktop tool](https://zeit.co/download) or via node with `pnpm install -g now`.
 
 2. Build your app by running `npm run build`.
 
@@ -2325,7 +2261,7 @@ See this [blog post](https://medium.com/@omgwtfmarc/deploying-create-react-app-t
 
 ### Surge
 
-Install the Surge CLI if you haven’t already by running `npm install -g surge`. Run the `surge` command and log in you or create a new account.
+Install the Surge CLI if you haven’t already by running `pnpm install -g surge`. Run the `surge` command and log in you or create a new account.
 
 When asked about the project path, make sure to specify the `build` folder, for example:
 
@@ -2372,7 +2308,7 @@ If none of these solutions help please leave a comment [in this thread](https://
 
 If you run `npm test` and the console gets stuck after printing `react-scripts test --env=jsdom` to the console there might be a problem with your [Watchman](https://facebook.github.io/watchman/) installation as described in [facebookincubator/create-react-app#713](https://github.com/facebookincubator/create-react-app/issues/713).
 
-We recommend deleting `node_modules` in your project and running `npm install` (or `yarn` if you use it) first. If it doesn't help, you can try one of the numerous workarounds mentioned in these issues:
+We recommend deleting `node_modules` in your project and running `pnpm install --shamefully-flatten` first. If it doesn't help, you can try one of the numerous workarounds mentioned in these issues:
 
 * [facebook/jest#1767](https://github.com/facebook/jest/issues/1767)
 * [facebook/watchman#358](https://github.com/facebook/watchman/issues/358)
